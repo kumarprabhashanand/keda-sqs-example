@@ -1,0 +1,13 @@
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: localstack-auth
+  namespace: default
+spec:
+  secretTargetRef:
+    - parameter: awsAccessKeyID     # Required.
+      name: aws-localstack-secrets            # Required.
+      key: AWS_ACCESS_KEY_ID        # Required.
+    - parameter: awsSecretAccessKey # Required.
+      name: aws-localstack-secrets            # Required.
+      key: AWS_SECRET_ACCESS_KEY    # Required.

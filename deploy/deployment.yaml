@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: keda-sqs-example
+  name: keda-sqs-example
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keda-sqs-example
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: keda-sqs-example
+    spec:
+      containers:
+      - image: <<image_name>>
+        name: keda-sqs-example-jvm
+        resources: {}
+        env:
+        - name: QUEUE
+          value: <<QUEUE_URL>>
+        - name: QUEUEHOST
+          value: https://queue.amazonaws.com
+        - name: ACCESSKEYID
+          value: <<AWS_ACCESS_KEY_ID>>
+        - name: ACCESSKEY
+          value: <<AWS_ACCESS_KEY>>
+status: {}
